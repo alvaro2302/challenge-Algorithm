@@ -9,14 +9,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import SearchStack from './src/components/Search/SearchStack';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const App = () => {
   
 
   return (
-    <NavigationContainer>
-      <SearchStack/>
-    </NavigationContainer>
+      <NavigationContainer>
+        <SearchStack/>
+      </NavigationContainer>
+   
+   
   );
 };
 
