@@ -5,14 +5,19 @@ async function get(url){
       method:'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  const response = await fetch(`${API}${url}`,options);
-  if (response.status == 200){
-    const result = await response.json();
-    return result;  
+ 
+  try{
+    const response = await fetch(`${API}${url}`,options)
+    .then(res => res.json())
+    .then(users => users)
+   console.log("response",response)
+   return response;
   }
-  else {
-    return null
+  catch(error){
+    throw(Error("ocurred error: ",error))
   }
+  
+  
 
 }
 
