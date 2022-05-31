@@ -1,14 +1,19 @@
-import React,{useState} from "react";
-import {View, StyleSheet,TextInput,TouchableOpacity} from 'react-native';
+import React,{useState,useEffect} from "react";
+import {View, StyleSheet,TextInput,TouchableOpacity,Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import SearchResults from "./SearchResults";
 const SearchView = ()=>{
     const [search,setSearch] = useState('')
-
+    const [isSearch,setIsSearch] = useState(false);
     const searchResults = () =>{
-        console.log("searchResults")
-        console.log(search)
+        setIsSearch(true)
     }
+    useEffect(()=>{
+        if(search == '')
+        {
+            setIsSearch(false);
+        }
+    },[search])
     return (
         <View style={styles.headerSearch}>
             <View style={styles.search}>
@@ -25,6 +30,18 @@ const SearchView = ()=>{
                     <Icon name='search' size={20} style={styles.iconSearch} />
                 </TouchableOpacity>
             </View>
+            <View>
+            {
+                (search && isSearch)?
+                (<SearchResults
+                 wordSearch={search}
+                 setIsSearch={setIsSearch}
+                />)
+                : <Text>add email from user!!</Text>
+            }
+            </View>
+           
+            
         </View>
 
        
