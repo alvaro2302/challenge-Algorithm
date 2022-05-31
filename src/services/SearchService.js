@@ -2,10 +2,10 @@ import ApiService from './ApiService';
 
 async function search(email)
 {
-    let url = '/users'
+    let url = `/users?email=${email}`;
     const searchResults = await ApiService.get(url);
-    const filterResults = searchResults.filter(user => user.email === email)
-    return filterResults;
+    console.log("service search", searchResults)
+    return searchResults;
 }
 export default { search}
 
