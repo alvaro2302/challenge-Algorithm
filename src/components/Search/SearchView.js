@@ -5,12 +5,30 @@ import SearchResults from "./SearchResults";
 const SearchView = ()=>{
     const [search,setSearch] = useState('')
     const [isSearch,setIsSearch] = useState(false);
+    const [lastSearch,setLastSearch] = useState({
+        word:'',
+        id:0
+    });
+
     const searchResults = () =>{
         setIsSearch(true)
+        setLastSearch({
+            ...lastSearch,
+            word:search
+        })
+        console.log("last search",lastSearch)
+    }
+    const getLastUser = () =>{
+        console.log("last search",lastSearch)
     }
     useEffect(()=>{
         if(search == '')
         {
+            setIsSearch(false);
+        }
+        if(search !== lastSearch.word)
+        {
+            console.log("change")
             setIsSearch(false);
         }
     },[search])
@@ -36,10 +54,18 @@ const SearchView = ()=>{
                 (<SearchResults
                  wordSearch={search}
                  setIsSearch={setIsSearch}
+                 setLastSearch={setLastSearch}
                 />)
-                : <Text>add email from user!!</Text>
+                : <Text>add email from user or click in button search!!</Text>
             }
             </View>
+            <TouchableOpacity
+             style={styles.buttonEnter}
+             disabled={lastSearch.id === 0}
+             onPress={getLastUser}
+            >
+                <Text >Ingresar</Text>
+            </TouchableOpacity>
            
             
         </View>
@@ -77,6 +103,15 @@ const styles = StyleSheet.create({
     iconSearch:{
         alignSelf:'center',
         marginTop:'25%'
+    },
+    buttonEnter:{
+        width:'20%',
+        height:'30%',
+        backgroundColor:'#33FF39',
+        alignSelf:'center',
+        alignItems:'center',
+        justifyContent: 'center',
+        borderRadius:15
     }
     
   });
