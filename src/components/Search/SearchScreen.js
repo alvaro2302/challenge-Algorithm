@@ -5,9 +5,9 @@ import SearchView from "./SearchView";
 const SearchScreen = () =>{
  return (
     <View style={{flex:1}}>
-       <ScrollView>
+     
          <SearchView/>
-       </ScrollView>
+     
 
     </View>
  )
