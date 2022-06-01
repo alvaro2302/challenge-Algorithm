@@ -19,10 +19,8 @@ const SearchView = (props)=>{
             ...lastSearch,
             word:search
         })
-        console.log("last search",lastSearch)
     }
     const getLastUser = () =>{
-        console.log("last search",lastSearch)
         navigation.navigate('posts',{user:lastSearch})
     }
     useEffect(()=>{
@@ -32,7 +30,6 @@ const SearchView = (props)=>{
         }
         if(search !== lastSearch.word)
         {
-            console.log("change")
             setIsSearch(false);
         }
     },[search])

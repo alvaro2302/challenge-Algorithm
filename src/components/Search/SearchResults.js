@@ -15,7 +15,6 @@ const SearchResults = (props)=>{
                 id: resultsSearch[0].id
             }))
         }
-        console.log("respondess",resultsSearch);
         setSearchResults(resultsSearch)
         
     }

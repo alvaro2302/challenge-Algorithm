@@ -8,7 +8,6 @@ const PostView = (props)=>{
     const [posts,setPost] = useState(null);
     const getPost = async()=>{
         const resultsPosts = await PostServices.getPosts(data.id);
-        console.log("posts,",resultsPosts);
         setPost(resultsPosts);
     }
     const renderPost = ({item}) =>{
@@ -23,7 +22,6 @@ const PostView = (props)=>{
     }
 
     useEffect(()=>{
-        console.log("post",props);
         getPost();
     },[])
     return (
