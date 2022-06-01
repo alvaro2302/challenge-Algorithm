@@ -2,6 +2,7 @@ import React, {useEffect,useState} from "react";
 import {View,Text} from 'react-native';
 import SearchService from "../../services/SearchService";
 import UserView from "../User/UserView";
+import { ScrollView} from 'react-native-gesture-handler';
 const SearchResults = (props)=>{
     const {wordSearch,setLastSearch,} = props;
     const [searchResults,setSearchResults] = useState(null);
@@ -27,7 +28,7 @@ const SearchResults = (props)=>{
     
 
         return(
-            <View>
+            <View >
                 { searchResults &&
                     searchResults.map((user)=>(
                         <UserView
