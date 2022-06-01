@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchResults from "./SearchResults";
 
 
-const SearchView = ()=>{
+const SearchView = (props)=>{
+    const {navigation} = props;
     const [search,setSearch] = useState('')
     const [isSearch,setIsSearch] = useState(false);
     const [lastSearch,setLastSearch] = useState({
@@ -22,6 +23,7 @@ const SearchView = ()=>{
     }
     const getLastUser = () =>{
         console.log("last search",lastSearch)
+        navigation.navigate('posts',{user:lastSearch})
     }
     useEffect(()=>{
         if(search == '')
