@@ -3,14 +3,15 @@ import {View} from 'react-native';
 
 import PostView from "./PostView";
 const PostScreen = (props)=>{
+    const {navigation} = props; 
     const user = props.route.params.user;
     useEffect(()=>{
-        console.log("user",user);
+        console.log("PostScreen",props);
     })
     return(
         <View style={{flex:1,}}>
             
-            <PostView data={user}/>
+            <PostView data={user} navegation={navigation}/>
          
         </View>
     );
