@@ -3,11 +3,17 @@ import {View,Text} from 'react-native';
 import SearchService from "../../services/SearchService";
 import UserView from "../User/UserView";
 const SearchResults = (props)=>{
-    const {wordSearch} = props;
+    const {wordSearch,setLastSearch,} = props;
     const [searchResults,setSearchResults] = useState(null);
    
     const getResults = async(word)=>{
         const resultsSearch = await SearchService.search(word);
+        if(resultsSearch.length > 0){
+            setLastSearch((prevState)=>({
+                ...prevState,
+                id: resultsSearch[0].id
+            }))
+        }
         console.log("respondess",resultsSearch);
         setSearchResults(resultsSearch)
         
