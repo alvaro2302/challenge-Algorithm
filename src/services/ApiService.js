@@ -10,7 +10,6 @@ async function get(url){
     const response = await fetch(`${API}${url}`,options)
     .then(res => res.json())
     .then(users => users)
-   console.log("response",response)
    return response;
   }
   catch(error){

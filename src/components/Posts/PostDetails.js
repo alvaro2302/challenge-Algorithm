@@ -9,7 +9,6 @@ const PostDetails = (props) =>{
     const getPost = async()=>{
         const postResult = await PostServices.getPost(idPost);
         const photoResult = await PhotosService.getImage(idPost);
-        console.log("POST Details", postResult, photoResult)
         setPost(postResult[0]);
         setPhoto(photoResult[0]);
     }

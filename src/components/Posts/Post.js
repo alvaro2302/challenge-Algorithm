@@ -13,7 +13,6 @@ const Post = (props) =>{
  },[])
  const getDetails = ()=>{
    navegation.navigate('detailsPost',{idPost:postId})
-   console.log("press in post",title)
  }
  return (
      

@@ -6,7 +6,6 @@ const PostScreen = (props)=>{
     const {navigation} = props; 
     const user = props.route.params.user;
     useEffect(()=>{
-        console.log("PostScreen",props);
     })
     return(
         <View style={{flex:1,}}>
