@@ -5,4 +5,10 @@ async function getPosts(id)
     const postsResults = await ApiService.get(url);
     return postsResults;
 }
-export default {getPosts};
+async function getPost(idPost)
+{
+    let url = `/posts?id=${idPost}`;
+    const postResult = await ApiService.get(url);
+    return postResult; 
+}
+export default {getPosts,getPost};
