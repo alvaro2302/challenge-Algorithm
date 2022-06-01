@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import {View,Text,Pressable,StyleSheet,ImageBackground} from 'react-native';
 import PhotosService from "../../services/PhotosService";
 const Post = (props) =>{
- const {idPhoto,title} = props; 
+ const {postId,idPhoto,title,navegation} = props; 
  const [urlPhoto,setUrlPhoto] = useState(null);
  const getImage = async()=>{
     const photo = await PhotosService.getImage(idPhoto);
@@ -11,18 +11,43 @@ const Post = (props) =>{
  useEffect(()=>{
    getImage();
  },[])
+ const getDetails = ()=>{
+   navegation.navigate('detailsPost',{idPost:postId})
+   console.log("press in post",title)
+ }
  return (
      
-    <View style={{flex:1,height:250}} >
-        <Text>{title}</Text>
+    <Pressable style={styles.container} onPress={getDetails} >
+        
         <ImageBackground
-         style={{width:'100%',height:'100%'}}
+         style={styles.image}
          imageStyle={{borderRadius:15}}
          source ={{uri:urlPhoto}}
         >
+         <Text style={styles.title}>{title}</Text>
         </ImageBackground>
-    </View>
+    </Pressable>
  );
 };
+
+const styles = StyleSheet.create({
+   container:{
+      flex:1,
+      height:250,
+      marginTop:'10%'
+   },
+   image:{
+      width:'100%',
+      height:'100%',
+     
+   },
+   title:{
+      marginTop:'5%',
+      marginStart:'5%',
+      color:'white',
+      fontSize:20,
+      fontWeight:'bold'
+   }
+});
 
 export default Post;

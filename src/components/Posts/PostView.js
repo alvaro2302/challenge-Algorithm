@@ -4,7 +4,7 @@ import PostServices from "../../services/PostServices";
 
 import Post from "./Post";
 const PostView = (props)=>{
-    const {data} = props;
+    const {data,navegation} = props;
     const [posts,setPost] = useState(null);
     const getPost = async()=>{
         const resultsPosts = await PostServices.getPosts(data.id);
@@ -14,13 +14,16 @@ const PostView = (props)=>{
     const renderPost = ({item}) =>{
         return (
         <Post
+          postId={item.id}
           idPhoto={item.id}
-          title={item.title} 
+          title={item.title}
+          navegation={navegation}
         />
         )
     }
 
     useEffect(()=>{
+        console.log("post",props);
         getPost();
     },[])
     return (
