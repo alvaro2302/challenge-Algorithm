@@ -2,6 +2,8 @@ import React,{useState,useEffect} from "react";
 import {View, StyleSheet,TextInput,TouchableOpacity,Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchResults from "./SearchResults";
+
+
 const SearchView = ()=>{
     const [search,setSearch] = useState('')
     const [isSearch,setIsSearch] = useState(false);
@@ -48,7 +50,7 @@ const SearchView = ()=>{
                     <Icon name='search' size={20} style={styles.iconSearch} />
                 </TouchableOpacity>
             </View>
-            <View>
+            <View style={{height:'50%'}}>
             {
                 (search && isSearch)?
                 (<SearchResults
@@ -90,7 +92,9 @@ const styles = StyleSheet.create({
       backgroundColor:'white'
     },
     headerSearch:{
-      marginTop: '10%'
+      marginTop: '10%',
+      height:'50%',
+      
     },
     buttonSearch:{
       backgroundColor:'#D0D0D0', 
@@ -105,8 +109,8 @@ const styles = StyleSheet.create({
         marginTop:'25%'
     },
     buttonEnter:{
-        width:'20%',
-        height:'30%',
+        width:'25%',
+        height:'10%',
         backgroundColor:'#33FF39',
         alignSelf:'center',
         alignItems:'center',
