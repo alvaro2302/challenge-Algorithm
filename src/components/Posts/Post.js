@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import {View,Text,Pressable,StyleSheet,ImageBackground} from 'react-native';
 import PhotosService from "../../services/PhotosService";
 const Post = (props) =>{
- const {idPhoto,title} = props; 
+ const {postId,idPhoto,title,navegation} = props; 
  const [urlPhoto,setUrlPhoto] = useState(null);
  const getImage = async()=>{
     const photo = await PhotosService.getImage(idPhoto);
@@ -12,7 +12,8 @@ const Post = (props) =>{
    getImage();
  },[])
  const getDetails = ()=>{
-    console.log("press in post",title)
+   navegation.navigate('detailsPost',{idPost:postId})
+   console.log("press in post",title)
  }
  return (
      
