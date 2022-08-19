@@ -1,26 +1,49 @@
 import React, {useEffect,useState} from "react";
 import {View,Text} from 'react-native';
-import SearchService from "../../services/SearchService";
-import UserView from "../User/UserView";
-import { ScrollView} from 'react-native-gesture-handler';
 const SearchResults = (props)=>{
     const {wordSearch,setLastSearch,} = props;
-    const [searchResults,setSearchResults] = useState(null);
+    const [stringReversed,setStringReversed] = useState(null); 
    
-    const getResults = async(word)=>{
-        const resultsSearch = await SearchService.search(word);
-        if(resultsSearch.length > 0){
-            setLastSearch((prevState)=>({
-                ...prevState,
-                id: resultsSearch[0].id
-            }))
-        }
-        setSearchResults(resultsSearch)
+
+    const getReverse = (input)=>{
+        let stringInput = Array.from(input);
+        let numbers = [];
+        let positions = {}; 
         
-    }
+        for(let i=0;i<stringInput.length;i++)
+        {
+            if( parseInt( stringInput[i]))
+            {
+                numbers.push(stringInput[i]);
+                positions[i] = true;
+            }
+        }
+        if(numbers.length <=1)
+        {
+            return input;
+        }
+        else
+        {
+            let result = Array.from(input).map((element,index)=>{
+                if(index in positions)
+                {
+                    const numberReverse = numbers.pop();  
+                    return numberReverse;
+                }
+                else
+                {
+                    return element;
+                } 
+            })
+            return result.join("");
+        }
+       
+    
+    }   
     useEffect(()=>{
         
-        getResults(wordSearch);
+        let result = getReverse(wordSearch);
+        setStringReversed(result);
 
     },[])
 
@@ -28,14 +51,9 @@ const SearchResults = (props)=>{
 
         return(
             <View >
-                { searchResults &&
-                    searchResults.map((user)=>(
-                        <UserView
-                         key={user.id}
-                         userName = {user.username}
-                         email = {user.email}
-                        />
-                    ))
+                { 
+                    (stringReversed) &&
+                    (<Text style={{textAlign:'center',fontSize:20}}> {stringReversed}</Text>)
                 }
             </View>
         );

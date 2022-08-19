@@ -17,8 +17,7 @@ const SearchStack = ()=>{
     return(
         <Stack.Navigator initialRouteName='search' screenOptions={screenOptions}>
             <Stack.Screen name='search' component={SearchScreen}/>
-            <Stack.Screen name='posts' component={PostScreen}/>
-            <Stack.Screen name='detailsPost' component={PostDetails}/>
+            
         </Stack.Navigator>
     );
 }

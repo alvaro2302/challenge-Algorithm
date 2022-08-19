@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from "react";
 import {View, StyleSheet,TextInput,TouchableOpacity,Text} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchResults from "./SearchResults";
 
 
@@ -14,6 +13,7 @@ const SearchView = (props)=>{
     });
 
     const searchResults = () =>{
+        console.log("touch button")
         setIsSearch(true)
         setLastSearch({
             ...lastSearch,
@@ -38,16 +38,10 @@ const SearchView = (props)=>{
             <View style={styles.search}>
                 <TextInput
                     style={styles.input}
-                    placeholder="search for email"
+                    placeholder="add to string"
                     value={search}
                     onChangeText={setSearch}            
                 />
-                <TouchableOpacity
-                    style={styles.buttonSearch}
-                    onPress={searchResults}
-                    >
-                    <Icon name='search' size={20} style={styles.iconSearch} />
-                </TouchableOpacity>
             </View>
             <View style={{height:'50%'}}>
             {
@@ -57,15 +51,15 @@ const SearchView = (props)=>{
                  setIsSearch={setIsSearch}
                  setLastSearch={setLastSearch}
                 />)
-                : <Text>add email from user or click in button search!!</Text>
+                : <Text>add a string for reversed this numbers in the string</Text>
             }
             </View>
             <TouchableOpacity
              style={styles.buttonEnter}
-             disabled={lastSearch.id === 0}
-             onPress={getLastUser}
+            
+             onPress={searchResults}
             >
-                <Text >Ingresar</Text>
+                <Text >Reverse String</Text>
             </TouchableOpacity>
            
             
