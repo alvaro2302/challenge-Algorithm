@@ -1,8 +1,6 @@
 import React from "react";
 import { createStackNavigator,TransitionPresets } from "@react-navigation/stack";
 import SearchScreen from "./SearchScreen";
-import PostScreen from "../Posts/PostScreen";
-import PostDetails from "../Posts/PostDetails";
 const screenOptions = {
     headerTransparent: true,
     headerTitleStyle: {

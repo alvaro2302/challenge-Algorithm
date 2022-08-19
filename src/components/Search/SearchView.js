@@ -13,7 +13,6 @@ const SearchView = (props)=>{
     });
 
     const searchResults = () =>{
-        console.log("touch button")
         setIsSearch(true)
         setLastSearch({
             ...lastSearch,
